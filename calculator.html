@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Web</title>
+    <style>
+        /* 顶部横幅样式 */
+        .banner {
+            display: flex;
+            justify-content: space-between; /* 按钮均匀分布 */
+            align-items: center;
+            padding: 1rem;
+            background-color: #4CAF50; /* 横幅背景颜色 */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .banner button {
+            background-color: white;
+            color: #4CAF50;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .banner button:hover {
+            background-color: #45a049; /* 按钮悬停效果 */
+            color: white;
+        }
+
+        /* 页面整体样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            padding: 2rem;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部横幅 -->
+    <div class="banner">
+        <!-- 按钮：Calculator -->
+        <button id="calculator-btn">Calculator</button>
+        <!-- 按钮：Formula -->
+        <button id="formula-btn">Formula</button>
+        <!-- 按钮：Creator Info -->
+        <button id="creator-info-btn">Creator Info</button>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="main-content" id="main-content">
+        <h1>Welcome to the Calculator Web!</h1>
+        <p>Click the buttons above to explore different features.</p>
+    </div>
+
+
+
+    
+
+    <script>
+        // 点击“Calculator”按钮时，显示相关的计算器内容
+        document.getElementById('calculator-btn').addEventListener('click', () => {
+            const content = document.getElementById('main-content');
+            content.innerHTML = `
+                <h1>Calculator</h1>
+                <p>Select a calculation type below:</p>
+                <div class="calculator-buttons">
+                    <!-- 添加不同类型的计算器按钮 -->
+                    <button class="calc-btn" id="matrix-btn">Matrix</button>
+                    <button class="calc-btn" id="limit-btn">Limit</button>
+                    <button class="calc-btn" id="polynomial-btn">Polynomial</button>
+                    <button class="calc-btn" id="derivatives-btn">Derivatives</button>
+                </div>
+                <div class="calculator-display" id="calculator-display">
+                    <p>Select a calculation type to begin.</p>
+                </div>
+            `;
+    
+            // 样式：计算器按钮和显示区域
+            const style = document.createElement('style');
+            style.innerText = `
+                .calculator-buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+                    margin: 1rem 0;
+                }
+    
+                .calc-btn {
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 0.5rem 1rem;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    transition: background-color 0.3s ease;
+                }
+    
+                .calc-btn:hover {
+                    background-color: #45a049;
+                }
+    
+                .calculator-display {
+                    margin-top: 2rem;
+                    padding: 1rem;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                    text-align: center;
+                }
+            `;
+            document.head.appendChild(style);
+    
+            // 为每个按钮添加点击事件
+            document.getElementById('matrix-btn').addEventListener('click', () => {
+                const display = document.getElementById('calculator-display');
+                display.innerHTML = `
+                    <h2>Matrix Calculator</h2>
+                    <p>Enter matrix data to calculate its properties and perform operations.</p>
+                    <!-- 在这里添加矩阵输入和操作的代码 -->
+                `;
+            });
+    
+            document.getElementById('limit-btn').addEventListener('click', () => {
+                const display = document.getElementById('calculator-display');
+                display.innerHTML = `
+                    <h2>Limit Calculator</h2>
+                    <p>Enter a function and a point to calculate its limit.</p>
+                    <!-- 在这里添加极限计算的输入和操作代码 -->
+                `;
+            });
+    
+            document.getElementById('polynomial-btn').addEventListener('click', () => {
+                const display = document.getElementById('calculator-display');
+                display.innerHTML = `
+                    <h2>Polynomial Calculator</h2>
+                    <p>Enter polynomial coefficients to analyze the polynomial.</p>
+                    <!-- 在这里添加多项式计算的输入和操作代码 -->
+                `;
+            });
+    
+            document.getElementById('derivatives-btn').addEventListener('click', () => {
+                const display = document.getElementById('calculator-display');
+                display.innerHTML = `
+                    <h2>Derivatives Calculator</h2>
+                    <p>Enter a function to calculate its derivative.</p>
+                    <!-- 在这里添加导数计算的输入和操作代码 -->
+                `;
+            });
+        });
+    </script>
+
+
+
+<script>
+    // 点击“Formula”按钮时，显示相关的数学公式内容
+    document.getElementById('formula-btn').addEventListener('click', () => {
+        const content = document.getElementById('main-content');
+        content.innerHTML = `
+            <h1>Math Formulas</h1>
+            <p>Select a formula category below:</p>
+            <div class="formula-buttons">
+                <!-- 添加不同数学公式分类的按钮 -->
+                <button class="formula-btn" id="trigo-btn">Trigonometry</button>
+                <button class="formula-btn" id="algebra-btn">Algebra</button>
+                <button class="formula-btn" id="calculus-btn">Calculus</button>
+                <button class="formula-btn" id="geometry-btn">Geometry</button>
+            </div>
+            <div class="formula-display" id="formula-display">
+                <p>Select a formula category to view formulas.</p>
+            </div>
+        `;
+
+        // 样式：数学公式按钮和显示区域
+        const style = document.createElement('style');
+        style.innerText = `
+            .formula-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .formula-btn {
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+            .formula-btn:hover {
+                background-color: #0056b3;
+            }
+
+            .formula-display {
+                margin-top: 2rem;
+                padding: 1rem;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+                text-align: center;
+            }
+
+            .formula-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 1rem auto;
+                display: block;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 为每个按钮添加点击事件，显示不同的数学公式
+        document.getElementById('trigo-btn').addEventListener('click', () => {
+            const display = document.getElementById('formula-display');
+            display.innerHTML = `
+                <h2>Trigonometry Formulas</h2>
+                <img src="https://via.placeholder.com/400x200?text=Trigonometry+Graph" class="formula-image" alt="Trigonometry Graph">
+                <p>sin²(θ) + cos²(θ) = 1</p>
+                <p>tan(θ) = sin(θ) / cos(θ)</p>
+                <p>sin(A ± B) = sinA cosB ± cosA sinB</p>
+            `;
+        });
+
+        document.getElementById('algebra-btn').addEventListener('click', () => {
+            const display = document.getElementById('formula-display');
+            display.innerHTML = `
+                <h2>Algebra Formulas</h2>
+                <img src="https://via.placeholder.com/400x200?text=Algebra+Graph" class="formula-image" alt="Algebra Graph">
+                <p>(a + b)² = a² + 2ab + b²</p>
+                <p>a² - b² = (a - b)(a + b)</p>
+                <p>Quadratic Formula: x = (-b ± √(b² - 4ac)) / 2a</p>
+            `;
+        });
+
+        document.getElementById('calculus-btn').addEventListener('click', () => {
+            const display = document.getElementById('formula-display');
+            display.innerHTML = `
+                <h2>Calculus Formulas</h2>
+                <img src="https://via.placeholder.com/400x200?text=Calculus+Graph" class="formula-image" alt="Calculus Graph">
+                <p>d/dx [xⁿ] = n*x^(n-1)</p>
+                <p>∫ xⁿ dx = (x^(n+1)) / (n+1) + C</p>
+                <p>Chain Rule: d/dx [f(g(x))] = f'(g(x)) * g'(x)</p>
+            `;
+        });
+
+        document.getElementById('geometry-btn').addEventListener('click', () => {
+            const display = document.getElementById('formula-display');
+            display.innerHTML = `
+                <h2>Geometry Formulas</h2>
+                <img src="https://via.placeholder.com/400x200?text=Geometry+Diagram" class="formula-image" alt="Geometry Diagram">
+                <p>Pythagorean Theorem: a² + b² = c²</p>
+                <p>Area of a Circle: A = πr²</p>
+                <p>Perimeter of a Rectangle: P = 2(l + w)</p>
+            `;
+        });
+    });
+</script>
+
+
+
+<script>
+    // 点击“Creator Info”按钮时，显示创作者信息页面
+    document.getElementById('creator-info-btn').addEventListener('click', () => {
+        const content = document.getElementById('main-content');
+        content.innerHTML = `
+            <div class="creator-info">
+                <h1>About the Creator</h1>
+                <img src="https://via.placeholder.com/150" class="creator-image" alt="Creator Image">
+                <h2 id="creator-name">Xuchi</h2>
+                <h3 id="creator-slogan">"Make Math Easier"</h3>
+                <p id="creator-bio">A noob of programing and math. Give me some warm tips if u want.</p>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <span id="creator-email">your.email@example.com</span></p>
+                    <p><strong>Website:</strong> <span id="creator-website">www.yourwebsite.com</span></p>
+                    <p><strong>Social Media:</strong> <span id="creator-social">@your_social_handle</span></p>
+                </div>
+            </div>
+        `;
+
+        // 样式：创作者信息页面
+        const style = document.createElement('style');
+        style.innerText = `
+            .creator-info {
+                text-align: center;
+                padding: 2rem;
+                font-family: Arial, sans-serif;
+            }
+
+            .creator-image {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin: 1rem auto;
+                display: block;
+                border: 3px solid #4CAF50;
+            }
+
+            .creator-info h1 {
+                color: #4CAF50;
+            }
+
+            .contact-info {
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+                display: inline-block;
+                text-align: left;
+            }
+
+            .contact-info p {
+                margin: 5px 0;
+            }
+        `;
+        document.head.appendChild(style);
+    });
+</script>
+
+
+</body>
+</html>
